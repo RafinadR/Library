@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>All books</title>
+        <link href="{% static 'book/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+        <h1 id="title">All books:</h1>
+        {% if books %}
+            <ul>
+                {% for book in books %}
+                    <!-- <li>{{ book.name }} by {{ book.authors.all|join:", " }}</li> -->
+                    <li><a href="{% url 'book:view_book' book.id %}">{{ book.name }}</a></li>
+                    {% if request.user.role == 1 %}
+                    <a href="{% url 'book:delete_book' book.id %}"><button type="button" id="button_blue">Delete</button></a> <br>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No books available.</p>
+        {% endif %}
+
+        {% if request.GET.title or request.GET.author %}
+            <a href="{% url 'book:all_books' %}">Back to all books</a>
+        {% endif %}
+
+        <form method="GET">
+            <label for="title">Title:</label>
+            <input type="text" name="title">
+            <label for="author">Author:</label> <br>
+            <input type="text" name="author"><br><br>
+            <button id="button_blue" type="submit">Filter</button>
+        </form>   
+        <br>
+        {% if request.user.role == 1 %}
+            <h3>Books, provided to user: </h3>
+            <form method="GET">  
+                <label for="user_id">User id:</label>   
+                <input type="text" id="user_id" name="user_id"><br><br>
+                <button id="button_blue" type="submit">Show Books</button>  
+            </form>
+              <br>
+              <a href="{% url 'book:add' %}"><button class="button" id="button_green">Add book</button></a><br>
+        {% endif %}
+        
+        <a href="{% url 'authentication:index' %}"><button id="button_green" type="button">Main Page</button></a>
+        
+    </body>
+</html>

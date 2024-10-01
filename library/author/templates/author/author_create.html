@@ -1,0 +1,28 @@
+{% extends "author/base.html" %}
+{% load static %}
+
+
+
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href='{% static "author/styles.css" %}'>
+    <title>Create the author</title>
+    
+ {% endblock %}
+
+ {% block body%}
+    
+    <form method="post">
+        <div class="container">
+            <h1 id="title">Create New Author</h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button id="button_create_user" type="submit">Create Author</button>
+            <br>
+            
+        <a href="{% url 'authentication:index' %}"><button id="button_create_user" type="button">Main Page</button></a>
+        </a>
+
+        </div>
+    </form>
+ {% endblock %}

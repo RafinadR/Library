@@ -1,0 +1,30 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+
+
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href='{% static "authentication/styles.css" %}'>
+    <title>Log In</title>
+    
+ {% endblock %}
+
+ {% block body%}
+    <div class="container">
+        <h1>Welcome, {{request.user.first_name}}</h1>
+        <h2>Your role: {{role}}
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+        </form>
+        
+        <a href="{% url 'author:all_authors' %}"><button>Authers</button></a>
+        <a href="{% url 'users:all_users' %}"><button>Users</button></a>
+        <a href="{% url 'book:all_books' %}"><button>Books</button></a>
+        <a href="{% url 'order:all_orders' %}"><button>All orders</button></a>
+        
+        
+    </div>
+
+ {% endblock %}

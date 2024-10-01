@@ -1,0 +1,38 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+
+
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href='{% static "authentication/styles.css" %}'>
+    <title>User's page</title>
+    
+ {% endblock %}
+
+ {% block body%}
+    <div class="container">
+        <h1 id="title">{{ user.first_name }}'s page</h2>
+        <p>Name: {{ user.first_name }}</p>
+        <p>Surname: {{ user.last_name }}</p>
+        {% if user.middle_name %}
+        <p>Middle name: {{ user.middle_name }}</p>
+        {% endif %}
+        <p>Email: {{ user.email }}</p>
+        <p>Created at: {{ user.created_at }}</p>
+        <p>Last login : {{ user.last_login }}</p>
+        <p>Role: {{ role }}</p>
+        {% if user.is_superuser %}
+        <p>Superuser: Yes</p>
+        {% endif %}
+        {% if user.is_staff %}
+        <p>Staff: Yes</p>
+        {% endif %}
+        <a href="{% url 'users:all_users' %}"><button id="button_create_user" type="button">All users</button></a>
+        </a>
+        <br>
+        <a href="{% url 'authentication:index' %}"><button id="button_create_user" type="button">Main Page</button></a>
+        </a>
+            
+    </div>
+ {% endblock %}

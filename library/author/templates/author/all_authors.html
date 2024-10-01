@@ -1,0 +1,50 @@
+{% extends "author/base.html" %}
+{% load static %}
+
+
+
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href='{% static "author/styles.css" %}'>
+    <title>Authors</title>
+    
+ {% endblock %}
+
+ {% block body%}
+    <div class="container">
+        <h1 id="title">Authors</h1>
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li id="message" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+        
+        <ul>
+        {% for author in authors %}
+            <li><a href="{% url 'author:author_by_id' author.id %}"><p>{{ author.name }} {{ author.surname}} {{author.patronymic}}</p></a>
+                <a id="button_link" href="{% url 'author:author_delete' author.id %}"> 
+                <button id="button_delete_user">
+                Delete
+                </button>
+                </a><br>
+                <a id="button_link" href="{% url 'author:author_update' author.id %}"> 
+                  <button id="button_delete_user">
+                  Update
+                  </button>
+                  </a>
+            </li>
+        {% endfor %}
+        </ul>
+        
+        <br>
+        <a href="{% url 'author:author_create' %}"><button id="button_create_user" type="button">Create New Author</button></a>
+        </a>
+        <br>
+        <a href="{% url 'authentication:index' %}"><button id="button_create_user" type="button">Main Page</button></a>
+        </a>
+      </div>  
+
+ {% endblock %}

@@ -1,0 +1,31 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+
+
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href='{% static "authentication/styles.css" %}'>
+    <title>Users</title>
+    
+ {% endblock %}
+
+ {% block body%}
+    <div class="container">
+        <h1 id="title">Users</h1>
+        <ul>
+            {% for user in users %}
+                <li>
+                    <a href="{% url 'users:user_by_id' user.id %}">
+                        {% if user.middle_name %}
+                        <p>User: {{ user.first_name }} {{ user.middle_name}} {{user.last_name}}</p>
+                        {% endif %}
+                        <p>User: {{ user.first_name }} {{user.last_name}}</p>
+                    </a>  
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'authentication:index' %}"><button id="button_create_user" type="button">Main Page</button></a>
+        </a>
+    </div>
+ {% endblock %}

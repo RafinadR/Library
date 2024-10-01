@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{ book.name }}</title>
+        <link href="{% static 'book/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class='container'>
+            <h1 id="title">{{ book.name }}</h1>
+            <p>Description: {{ book.description }}</p>
+            <p>Count: {{ book.count }}</p>
+            <p>Authors: 
+                {% for author in book.authors.all %}
+                {{ author.name }}
+                {{ author.patronymic }} 
+                {{ author.surname }}
+                {% if not forloop.last %}, 
+                {% endif %}
+                {% endfor %}</p>
+            <a href="{% url 'book:all_books' %}"><button id="button_green">Back to all books</button></a><br>
+            <a href="{% url 'authentication:index' %}"><button id="button_green" type="button">Main Page</button></a>
+            </div>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href='{% static "order/styles.css" %}'>
+    <meta charset="UTF-8">
+    <title>Create Order</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="title">Create Order</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button id="button_blue" type="submit">Create Order</button><br>
+        </form>
+        <a href="{% url 'order:my_orders' %}"><button id="button_green">My orders</button></a><br>
+    </div>
+</body>
+
+</html>

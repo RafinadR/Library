@@ -1,0 +1,26 @@
+{% extends "author/base.html" %}
+{% load static %}
+
+
+{%block head%}
+        <title>{{ book.name }}</title>
+        <link rel="stylesheet" type="text/css" href='{% static "author/styles.css" %}'>
+{% endblock %}
+        
+
+{%block body %}
+    <div class="container">
+        <h1 id="title">Change the user</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button id="button_create_user" type="submit">Update Author</button><br>
+            <a href="{% url 'author:all_authors' %}">
+                <button id="button_create_user" type="button">All authors</button>
+            </a>
+        </a>
+        </form>
+
+    </div>
+
+{% endblock %}

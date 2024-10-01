@@ -1,0 +1,31 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href='{% static "order/styles.css" %}'>
+    <meta charset="UTF-8">
+    <title>My Orders</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">My Orders:</h1>
+        {% if user_orders %}
+            <ul>
+                {% for order in user_orders %}
+                    <p>Order: </p>
+                    <li>
+                        <p>Book: {{ order.book.name }}</p>
+                        <p>Plated End Date: {{ order.plated_end_at }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No orders available.</p>
+        {% endif %}
+        <a href="{% url 'order:create' %}"><button id="button_green">Add Order</button></a><br>
+        <a href="{% url 'authentication:index' %}"><button id="button_green" type="button">Main Page</button></a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+/* General Styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+.helptext {
+  margin-bottom: 10px;
+    font-size: 12px;
+}
+
+
+ul {
+  list-style: none;  /* Add this line to remove bullet points */
+  padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    font-size: 12px;
+    
+}
+.helptext {
+  margin-bottom: 10px;
+    font-size: 12px;
+}
+
+
+.container {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+  
+  /* Title */
+#title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.errorlist {
+  text-align: center;
+  margin-bottom: 20px;
+  color: red;
+}
+
+.error {
+  text-align: center;
+  margin-bottom: 20px;
+  color: red;
+}
+
+.success {
+  text-align: center;
+  margin-bottom: 20px;
+  color: green;
+} */
+  
+  /* Labels and Inputs */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+  
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+  
+input[type="radio"] {
+  margin-right: 5px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+  
+button {
+  margin: 10px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+  
+button:hover {
+  background-color: #3e8e41;
+} 
+  
